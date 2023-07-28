@@ -3,4 +3,10 @@ import { sign, verify } from 'jsonwebtoken'
 
 export const generateToken = (id: string) => sign(id, env.SECRET)
 
-export const verifyToken = (token: string) => verify(token, env.SECRET)
+export const verifyToken = (token: string) => {
+  try {
+    return verify(token, env.SECRET)
+  } catch (err) {
+    return
+  }
+}
