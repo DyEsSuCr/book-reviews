@@ -6,12 +6,9 @@ export const signinCtrl = async ({ body }: Request, res: Response) => {
   const { email, password } = body
 
   try {
-    const userAuth = await loginUser({
-      email,
-      password
-    })
+    const authUser = await loginUser({ email, password })
 
-    response(res, 200, userAuth)
+    response(res, 200, authUser)
   } catch (err) {
     responseErr(res, 'ERROR_LOGIN')
   }
@@ -21,13 +18,9 @@ export const signupCtrl = async ({ body }: Request, res: Response) => {
   const { username, email, password } = body
 
   try {
-    const userAuth = await registerNewUser({
-      username,
-      email,
-      password
-    })
+    const authUser = await registerNewUser({ username, email, password })
 
-    response(res, 201, userAuth)
+    response(res, 201, authUser)
   } catch (err) {
     responseErr(res, 'ERROR_REGISTER')
   }
