@@ -1,11 +1,12 @@
 import { Auth } from "@/interfaces/auth.interface"
+import { ErrorMessajes } from "@/interfaces/errors.interface"
 import { User } from "@/interfaces/user.interface"
 import { encrypt, comparePass, generateToken } from '@/utils'
 import { UserModel } from '@/models/users'
 
-export const registerNewUser = async ({ email, password, username }: User) => {
+export const registerNewUser = async ({ email, password, username }: User): Promise<object | ErrorMessajes> => {
   const userFound = await UserModel.findOne({ $or: [{ email }, { username }] })
-  if (userFound) return 'ALREADY_USER'
+  if (userFound) return ErrorMessajes.ALREADY_USER
 
   const passwordHash = await encrypt(password)
 
@@ -22,12 +23,12 @@ export const registerNewUser = async ({ email, password, username }: User) => {
   }
 }
 
-export const loginUser = async ({ email, password }: Auth) => {
+export const loginUser = async ({ email, password }: Auth): Promise<object | ErrorMessajes> => {
   const userFound = await UserModel.findOne({ email })
-  if (!userFound) return 'USER_NOT_FOUND'
+  if (!userFound) return ErrorMessajes.USER_NOT_FOUND
 
   const matchPassowrd = await comparePass(password, userFound.password)
-  if (!matchPassowrd) return 'PASSWORD_INCORRECT'
+  if (!matchPassowrd) return ErrorMessajes.PASSWORD_INCORRECT
 
   const token = generateToken(userFound.id)
 
