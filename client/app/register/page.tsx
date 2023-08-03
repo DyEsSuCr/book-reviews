@@ -1,5 +1,5 @@
-'use client'
+import { FormSignup } from '@/components/FormSignup'
 
-export default function Signup() {
-  return <h1>Form Register</h1>
+export default function Signup () {
+  return <FormSignup />
 }

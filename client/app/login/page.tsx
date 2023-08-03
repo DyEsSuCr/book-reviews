@@ -1,5 +1,5 @@
-'use client'
+import { FormSignin } from '@/components/FormSignin'
 
-export default function Signin() {
-  return <h1>Form Login</h1>
+export default function Signin () {
+  return <FormSignin />
 }
