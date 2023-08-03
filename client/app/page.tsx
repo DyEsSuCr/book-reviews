@@ -1,3 +1,5 @@
-export default function Home() {
-  return <h1>Home</h1>
+import { ListBooks } from '@/components/LIstBook'
+
+export default function Home () {
+  return <ListBooks />
 }
