@@ -1,24 +1,24 @@
-import { Review } from '@/interfaces/review.interface'
-import { Schema, model, } from 'mongoose'
+import { type Review } from '@/interfaces/review.interface'
+import { Schema, model } from 'mongoose'
 
 const ReviewSchema = new Schema<Review>(
   {
     review: {
       type: String,
-      required: true,
+      required: true
     },
     userId: {
       type: String,
-      required: true,
+      required: true
     },
     bookId: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   {
     timestamps: true,
-    versionKey: false,
+    versionKey: false
   }
 )
 

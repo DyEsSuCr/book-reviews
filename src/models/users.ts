@@ -1,4 +1,4 @@
-import { User } from '@/interfaces/user.interface'
+import { type User } from '@/interfaces/user.interface'
 import { Schema, model } from 'mongoose'
 
 const UserSchema = new Schema<User>(
@@ -11,7 +11,7 @@ const UserSchema = new Schema<User>(
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
     email: {
       type: String,
@@ -22,7 +22,7 @@ const UserSchema = new Schema<User>(
   },
   {
     timestamps: true,
-    versionKey: false,
+    versionKey: false
   }
 )
 
