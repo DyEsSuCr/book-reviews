@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { getAllReviews } from '@/controllers/reviews'
+import { getAllReviews, getBookReviews } from '@/controllers/reviews'
 
 const router = Router()
 
 router.get('/', getAllReviews)
+router.get('/:id/book', getBookReviews)
 
 export { router }

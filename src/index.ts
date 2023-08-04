@@ -6,7 +6,7 @@ const main = async () => {
     await dbConnect()
 
     app.listen(app.get('port'), () => {
-      console.log(`🆗✅🆗 Server on port ${app.get('port')} 🆗✅🆗`)
+      console.log(`🆗✅🆗 Server on port ${app.get('port') as string} 🆗✅🆗`)
     })
   } catch (err) {
     console.warn('🛑⛔ Not connection database ⛔🛑')

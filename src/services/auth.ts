@@ -1,6 +1,6 @@
-import { Auth } from "@/interfaces/auth.interface"
-import { ErrorMessajes } from "@/interfaces/errors.interface"
-import { User } from "@/interfaces/user.interface"
+import { type Auth } from '@/interfaces/auth.interface'
+import { ErrorMessajes } from '@/interfaces/errors.interface'
+import { type User } from '@/interfaces/user.interface'
 import { encrypt, comparePass, generateToken } from '@/utils'
 import { UserModel } from '@/models/users'
 
@@ -19,7 +19,7 @@ export const registerNewUser = async ({ email, password, username }: User): Prom
   return {
     id: registeredUser.id,
     username: registeredUser.username,
-    email: registeredUser.email,
+    email: registeredUser.email
   }
 }
 
@@ -37,7 +37,7 @@ export const loginUser = async ({ email, password }: Auth): Promise<object | Err
     user: {
       id: userFound.id,
       username: userFound.username,
-      email: userFound.email,
+      email: userFound.email
     }
   }
 }
