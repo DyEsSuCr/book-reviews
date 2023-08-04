@@ -9,8 +9,8 @@ export const checkJwt = async (req: RequestExt, res: Response, next: NextFunctio
   const { authorization } = req.headers
 
   try {
-    if (!authorization) return response(res, 403, ErrorMessajes.NO_BEARER_TOKEN)
-    if (!authorization.toLocaleLowerCase().startsWith('bearer')) return response(res, 403, 'NO_BEARER_TOKEN')
+    if (!authorization) return response(res, 403, ErrorMessajes.NO_TOKEN_PROVIDED)
+    if (!authorization.toLocaleLowerCase().startsWith('bearer')) return response(res, 403, ErrorMessajes.NO_BEARER_TOKEN)
 
     const decodedToken = verifyToken(authorization.substring(7))
     if (!decodedToken) return response(res, 403, ErrorMessajes.INVALID_TOKEN)
