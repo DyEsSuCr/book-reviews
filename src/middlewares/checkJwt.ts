@@ -1,9 +1,9 @@
-import { NextFunction, Response } from 'express'
+import { type NextFunction, type Response } from 'express'
 
+import { type RequestExt } from '@/interfaces/req.interface'
+import { ErrorMessajes } from '@/interfaces/errors.interface'
 import { responseErr, verifyToken, response } from '@/utils'
 import { UserModel } from '@/models/users'
-import { RequestExt } from '@/interfaces/req.interface'
-import { ErrorMessajes } from '@/interfaces/errors.interface'
 
 export const checkJwt = async (req: RequestExt, res: Response, next: NextFunction) => {
   const { authorization } = req.headers
@@ -19,7 +19,7 @@ export const checkJwt = async (req: RequestExt, res: Response, next: NextFunctio
     if (!user) return response(res, 404, ErrorMessajes.USER_NOT_FOUND)
 
     req.user = user
-    return next()
+    next()
   } catch (err) {
     responseErr(res, ErrorMessajes.JWT_ERROR)
   }

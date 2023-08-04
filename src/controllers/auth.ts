@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { type Request, type Response } from 'express'
 import { response, responseErr } from '@/utils'
 import { loginUser, registerNewUser } from '@/services/auth'
 import { ErrorMessajes } from '@/interfaces/errors.interface'
@@ -25,4 +25,4 @@ export const signupCtrl = async ({ body }: Request, res: Response) => {
   } catch (err) {
     responseErr(res, ErrorMessajes.ERROR_REGISTER)
   }
-} 
+}

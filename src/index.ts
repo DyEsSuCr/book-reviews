@@ -9,8 +9,9 @@ const main = async () => {
       console.log(`🆗✅🆗 Server on port ${app.get('port')} 🆗✅🆗`)
     })
   } catch (err) {
-    console.error(`🛑⛔ Not connection database ❗${err}❗ ⛔🛑`)
+    console.warn('🛑⛔ Not connection database ⛔🛑')
+    console.error(err)
   }
 }
 
-main()
+void main()
