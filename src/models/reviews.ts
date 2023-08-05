@@ -1,3 +1,4 @@
+// import { type Review } from '@/interfaces/review.interface'
 import { type Review } from '@/interfaces/review.interface'
 import { Schema, model } from 'mongoose'
 
@@ -7,10 +8,10 @@ const ReviewSchema = new Schema<Review>(
       type: String,
       required: true
     },
-    userId: [{
+    userId: {
       type: Schema.Types.ObjectId,
       ref: 'User'
-    }],
+    },
     bookId: {
       type: String,
       required: true
