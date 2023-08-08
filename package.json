@@ -15,15 +15,10 @@
     "@types/jsonwebtoken": "9.0.2",
     "@types/morgan": "1.9.4",
     "@types/multer": "1.4.7",
-    "@typescript-eslint/eslint-plugin": "5.52.0",
-    "eslint": "8.0.1",
-    "eslint-config-standard-with-typescript": "37.0.0",
-    "eslint-plugin-import": "2.25.2",
-    "eslint-plugin-n": "15.0.0 || 16.0.0",
-    "eslint-plugin-promise": "6.0.0",
     "morgan": "1.10.0",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
+    "ts-standard": "12.0.2",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.1.6"
   },
@@ -36,5 +31,17 @@
     "mongoose": "7.4.1",
     "multer": "1.4.5-lts.1",
     "zod": "3.21.4"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": ["./node_modules/ts-standard/eslintrc.json"],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "react/react-in-jsx-scope": "off"
+    }
   }
 }

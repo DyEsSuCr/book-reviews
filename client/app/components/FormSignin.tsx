@@ -27,8 +27,8 @@ export function FormSignin () {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="email" name="email" />
-      <input type="password" name="password" />
+      <input type='email' name='email' />
+      <input type='password' name='password' />
       <button>Iniciar</button>
     </form>
   )

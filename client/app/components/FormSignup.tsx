@@ -43,9 +43,9 @@ export function FormSignup () {
 
   return (
     <form onSubmit={handleSubmid}>
-      <input type="text" name="username" />
-      <input type="email" name="email" />
-      <input type="password" name="password" />
+      <input type='text' name='username' />
+      <input type='email' name='email' />
+      <input type='password' name='password' />
       <button>Registrarse</button>
     </form>
   )
