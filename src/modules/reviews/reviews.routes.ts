@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { ReviewController } from '@/modules/reviews/reviews.controller'
+import { ReviewController } from './reviews.controller'
 import { checkJwt } from '@/middlewares/checkJwt'
 
 const router = Router()

@@ -1,21 +1,24 @@
 import { Router } from 'express'
-import { readdirSync } from 'fs'
-import { parse } from 'path'
+import { readdirSync } from 'node:fs'
+import path, { parse } from 'node:path'
 
-const PATH_ROUTER = `${__dirname}`
+const PATH_ROUTER = path.join(__dirname, '../modules')
 const router = Router()
 
 const cleanFileName = (fileName: string) => parse(fileName).name
 
-// eslint-disable-next-line array-callback-return
-readdirSync(PATH_ROUTER).filter((fileName) => {
-  const cleanName = cleanFileName(fileName)
+readdirSync(PATH_ROUTER).forEach((folder) => {
+  const modulePath = path.join(PATH_ROUTER, folder)
 
-  if (cleanName !== 'index') {
-    void import(`./${cleanName}`).then((moduleRouter) => {
-      router.use(`/${cleanName}`, moduleRouter.router)
-    })
-  }
+  readdirSync(modulePath).forEach((fileName) => {
+    const cleanName = cleanFileName(fileName)
+
+    if (cleanName.endsWith('routes')) {
+      void import(`${modulePath}/${cleanName}`).then((moduleRouter) => {
+        router.use(`/${cleanName.split('.')[0]}`, moduleRouter.router)
+      })
+    }
+  })
 })
 
 export { router }
