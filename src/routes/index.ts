@@ -1,21 +1,23 @@
 import { Router } from 'express'
 import { readdirSync } from 'node:fs'
-import path, { parse } from 'node:path'
+import { parse, join } from 'node:path'
 
-const PATH_ROUTER = path.join(__dirname, '../modules')
+const PATH_MODULES = join(__dirname, '..', 'modules')
+const nameRoute = 0
+
 const router = Router()
 
 const cleanFileName = (fileName: string) => parse(fileName).name
 
-readdirSync(PATH_ROUTER).forEach((folder) => {
-  const modulePath = path.join(PATH_ROUTER, folder)
+readdirSync(PATH_MODULES).forEach((folder) => {
+  const routePath = join(PATH_MODULES, folder)
 
-  readdirSync(modulePath).forEach((fileName) => {
+  readdirSync(routePath).forEach((fileName) => {
     const cleanName = cleanFileName(fileName)
 
     if (cleanName.endsWith('routes')) {
-      void import(`${modulePath}/${cleanName}`).then((moduleRouter) => {
-        router.use(`/${cleanName.split('.')[0]}`, moduleRouter.router)
+      void import(`${routePath}/${cleanName}`).then((moduleRouter) => {
+        router.use(`/${cleanName.split('.')[nameRoute]}`, moduleRouter.router)
       })
     }
   })

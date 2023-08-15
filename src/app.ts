@@ -6,7 +6,7 @@ import morgan from 'morgan'
 // NOTE: Local
 import env from '@/config'
 import { router } from '@/routes'
-import { response } from '@/utils'
+import { errorHandle } from '@/utils'
 
 // NOTE: App Init
 const app = express()
@@ -23,6 +23,7 @@ app.use(morgan('dev'))
 // NOTE: Routes
 app.use('/api', router)
 
-app.use((_, res) => response(res, 404, { error: 'Rout Not Found' }))
+// NOTE: ErrorHandle
+app.use(errorHandle)
 
 export default app
