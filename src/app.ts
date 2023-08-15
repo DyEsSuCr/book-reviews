@@ -10,6 +10,7 @@ import { response } from '@/utils'
 
 // NOTE: App Init
 const app = express()
+app.disable('x-powered-by')
 
 // NOTE: Settings
 app.set('port', env.PORT)
