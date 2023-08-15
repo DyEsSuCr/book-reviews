@@ -1,12 +1,12 @@
 // NOTE: Thirds
-import express from 'express'
 import cors from 'cors'
+import express from 'express'
 import morgan from 'morgan'
 
 // NOTE: Local
-import { response } from '@/utils'
 import env from '@/config'
 import { router } from '@/routes'
+import { response } from '@/utils'
 
 // NOTE: App Init
 const app = express()

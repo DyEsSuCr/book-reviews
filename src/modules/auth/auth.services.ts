@@ -1,8 +1,8 @@
 import { type Auth } from '@/interfaces/auth.interface'
 import { ErrorMessajes } from '@/interfaces/errors.interface'
 import { type User } from '@/interfaces/user.interface'
-import { encrypt, comparePass, generateToken } from '@/utils'
 import { UserModel } from '@/models/users'
+import { comparePass, encrypt, generateToken } from '@/utils'
 
 export class ModelAuth {
   static async register ({ email, password, username }: User): Promise<object | ErrorMessajes> {

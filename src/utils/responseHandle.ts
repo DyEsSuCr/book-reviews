@@ -1,5 +1,5 @@
-import { type Response } from 'express'
 import { type ErrorMessajes } from '@/interfaces/errors.interface'
+import { type Response } from 'express'
 
 export const response = (res: Response, status: number, data: unknown) => res.status(status).json(data)
 

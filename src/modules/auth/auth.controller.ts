@@ -1,7 +1,7 @@
-import { type Request, type Response } from 'express'
-import { response, responseErr } from '@/utils'
-import { ModelAuth } from '@/modules/auth/auth.services'
 import { ErrorMessajes } from '@/interfaces/errors.interface'
+import { ModelAuth } from '@/modules/auth/auth.services'
+import { response, responseErr } from '@/utils'
+import { type Request, type Response } from 'express'
 
 export class AuthController {
   static async login ({ body }: Request, res: Response) {

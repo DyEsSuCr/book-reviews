@@ -1,7 +1,7 @@
-import { type Request, type Response, type NextFunction } from 'express'
-import { type AnyZodObject, ZodError } from 'zod'
-import { responseErr, response } from '@/utils'
 import { ErrorMessajes } from '@/interfaces/errors.interface'
+import { response, responseErr } from '@/utils'
+import { type NextFunction, type Request, type Response } from 'express'
+import { ZodError, type AnyZodObject } from 'zod'
 
 export const schemaValidator = (schema: AnyZodObject) => ({ body, params, query }: Request, res: Response, next: NextFunction) => {
   try {

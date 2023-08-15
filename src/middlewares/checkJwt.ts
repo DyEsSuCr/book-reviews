@@ -1,9 +1,9 @@
 import { type NextFunction, type Response } from 'express'
 
-import { type RequestExt } from '@/interfaces/req.interface'
 import { ErrorMessajes } from '@/interfaces/errors.interface'
-import { responseErr, verifyToken, response } from '@/utils'
+import { type RequestExt } from '@/interfaces/req.interface'
 import { UserModel } from '@/models/users'
+import { response, responseErr, verifyToken } from '@/utils'
 
 export const checkJwt = async (req: RequestExt, res: Response, next: NextFunction) => {
   const { authorization } = req.headers
