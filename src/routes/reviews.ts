@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { getAllReviews, getBookReviews, createReview } from '@/controllers/reviews'
+import { ReviewController } from '@/modules/reviews/reviews.controller'
 import { checkJwt } from '@/middlewares/checkJwt'
 
 const router = Router()
 
-router.get('/', getAllReviews)
-router.get('/:id/book', getBookReviews)
-router.post('/', checkJwt, createReview)
+router.get('/', ReviewController.getAll)
+router.get('/:id/book', ReviewController.getById)
+router.post('/', checkJwt, ReviewController.create)
 
 export { router }
