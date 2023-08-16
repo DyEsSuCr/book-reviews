@@ -1,5 +1,5 @@
 import app from '@/app'
-import { dbConnect } from '@/database/connect'
+import { dbConnect } from '@/database/mongodb/connect'
 
 const main = async () => {
   try {
